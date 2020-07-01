@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "f5c33f24-377d-4716-be9f-19942f502de7",
+		"name": "Falabella",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Prueba1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbeb8743-8981-4c21-9e2d-204b679b55ac",
+						"exec": [
+							"pm.test(\"OK código 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Json valido\", function () {",
+							"    var jsonData = pm.response.json();",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/gists/45",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"gists",
+						"45"
+					]
+				},
+				"description": "request de la prueba 1"
+			},
+			"response": []
+		},
+		{
+			"name": "Prueba2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "be8a9fd7-ee17-4d6c-bd8e-4c673a40a943",
+						"exec": [
+							"pm.test(\"Codigo OK\", function () {",
+							"    pm.response.to.be.ok;",
+							"});",
+							"",
+							"",
+							"pm.test(\"La respuesta del servidor es es menor a 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/gists/45/comments",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"gists",
+						"45",
+						"comments"
+					]
+				},
+				"description": "prueba 2 del documento"
+			},
+			"response": []
+		},
+		{
+			"name": "Prueba3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "334b19c7-7a52-4dcb-b155-8366a5e1f435",
+						"exec": [
+							"pm.test(\"Json valido\", function () {",
+							"    var jsonData = pm.response.json();",
+							"});",
+							"",
+							"pm.test(\"Respuesta fue valida o aceptada\", function () {",
+							"pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "matiasfernando1107",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "maati1313",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"body\":\"Aqui el comentario\"\n}"
+				},
+				"url": {
+					"raw": "https://api.github.com/gists/45/comments",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"gists",
+						"45",
+						"comments"
+					]
+				},
+				"description": "Prueba 3 del mail enviado "
+			},
+			"response": []
+		}
+	]
+}
